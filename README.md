@@ -29,12 +29,6 @@
 ### Задача 2
 Вывести имя пользователей из **Воронежа**, которые совершили больше всего покупок в **марте 2021** (статус `completed`)
 
-## ▶️ Запуск
 
-```bash
-# Создание базы данных
-sqlite3 database.db < database/schema.sql
-
-# Выполнение запросов
 sqlite3 database.db < queries/task_1.sql
 sqlite3 database.db < queries/task_2.sql
