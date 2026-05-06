@@ -1,19 +1,40 @@
-# SQL_analys_product_users
-# Задание по SQL
+# SQL-проект: Анализ транзакций
 
-## Структура БД
-![ER-диаграмма](schema.png)
+## 📌 Описание
+Проект содержит решение трёх задач по анализу базы данных интернет-магазина.
 
-## Задача 1
-Вывести топ-3 продавцов по выручке в Москве
+## 📊 Схема базы данных
+В базе 5 таблиц:
 
-**Ответ:**
-| name | total_sales |
-|------|-------------|
-| Seller of happiness | 150000 |
-| ... | ... |
+| Таблица | Описание |
+|---------|----------|
+| `cities` | Города |
+| `sellers` | Продавцы |
+| `products` | Товары |
+| `users` | Пользователи |
+| `transactions` | Транзакции |
 
-## Запуск
-\```bash
-sqlite3 database.db < queries/task1.sql
-\```
+**Связи:**
+- `users.city_id` → `cities.id`
+- `sellers.city_id` → `cities.id`
+- `products.seller_id` → `sellers.id`
+- `transactions.user_id` → `users.id`
+- `transactions.product_id` → `products.id`
+
+## 🎯 Задачи
+
+### Задача 1
+Вывести продавца с наименьшей суммой продаж пользователям из **Краснодара** (статус `completed`)
+
+### Задача 2
+Вывести имя пользователей из **Воронежа**, которые совершили больше всего покупок в **марте 2021** (статус `completed`)
+
+## ▶️ Запуск
+
+```bash
+# Создание базы данных
+sqlite3 database.db < database/schema.sql
+
+# Выполнение запросов
+sqlite3 database.db < queries/task_1.sql
+sqlite3 database.db < queries/task_2.sql
