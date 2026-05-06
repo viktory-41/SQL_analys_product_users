@@ -7,11 +7,11 @@ WITH user_krasnodar AS (
 SELECT 
     sellers.name,
     SUM(products.price) AS total_sales
-FROM transactions1
-JOIN user_krasnodar ON transactions1.user_id = user_krasnodar.id
-JOIN products ON transactions1.product_id = products.id
+FROM transactions
+JOIN user_krasnodar ON transactions.user_id = user_krasnodar.id
+JOIN products ON transactions.product_id = products.id
 JOIN sellers ON products.seller_id = sellers.id
-WHERE transactions1.status = 'completed'
+WHERE transactions.status = 'completed'
 GROUP BY sellers.name
 ORDER BY total_sales ASC
 LIMIT 1;
